@@ -1,0 +1,38 @@
+.createPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.uploadPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    border: 2px solid grey;
+    font-size: 1.5rem;
+}
+
+.uploadPost input {
+    width: 80%;
+    height: 50px;
+    margin: 10px;
+    font-size: 1.5rem;
+}
+
+textarea {
+    width: 80%;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+button {
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: turquoise;
+}
