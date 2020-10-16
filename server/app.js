@@ -2,7 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
-const postsRoutes = require('./routes/posts')
+const postsRoutes = require('./routes/posts');
+const auth = require('./middleware/auth');
 //const path = require('path');
 //const SauceRoutes = require('./routes/sauce');
 
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 //app.use('/images', express.static(path.join( __dirname, 'images' )));
 
 //app.use('/api/sauces', SauceRoutes);
-app.use('/api', postsRoutes);
-app.use('/api', userRoutes);
+app.use('/api/post', postsRoutes);
+app.use('/api/user', userRoutes);
 
 module.exports = app;

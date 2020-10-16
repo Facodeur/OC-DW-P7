@@ -1,23 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import Axios from 'axios';
+import './Post.css';
 
 export default function Post() {
 
-    let {postId} = useParams();
+    let { postId } = useParams();
+
+    const [post, setPost] = useState({});
 
     useEffect(() => {
-        Axios.get(`http://localhost:3010/api/getpost/${postId}`).then((data) => {
+        Axios.get(`http://localhost:3010/api/post/getpost/${postId}`).then((data) => {
+            setPost({ 
+                title: data.data[0].title,
+                postText: data.data[0].text,
+                imgUrl: data.data[0].imageUrl
+            })
             console.log(data)
         })
-    }, [])
-    return (
-        <div className="Post" >
-            {/* <h1>{val.title}</h1> */}
-            {/* <p>{val.imageUrl}</p> */}
-            {/* <p>{val.post_text.length > 500 ? val.post_text.substring(0,500) + '...' : val.post_text}</p> */}
+    }, []);
 
-            <h4>UserName</h4>
+    
+    return (
+        <div className="singlePost">
+           <div className="Post single" >
+                <h1>{post.title}</h1>
+                
+                <p>{post.postText}</p>
+                <p>{post.imgUrl}</p>
+                
+                <h4>UserName</h4>
+            </div> 
         </div>
+        
     )
 }

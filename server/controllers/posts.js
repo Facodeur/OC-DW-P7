@@ -10,7 +10,7 @@ exports.createPosts = (req, res, next) => {
 
     console.log("titre",title + " texte",text)
 
-    db.query("INSERT INTO posts (title, post_text, imageUrl) VALUES (?, ?, ?)",
+    db.query("INSERT INTO posts (title, text, imageUrl, date_posted) VALUES (?, ?, ?, NOW())",
     [title, text, imgageUrl], (err, result) => {
         if(err){
             console.log(err);
@@ -19,6 +19,19 @@ exports.createPosts = (req, res, next) => {
         console.log(result);
     });
 };
+
+exports.likes = (req, res, next) => {
+
+    const id = req.params.idpost;
+
+    db.query("UPDATE posts SET likes = likes + 1 WHERE idpost = ?", id, (err, result) => {
+        if(err){
+            console.log(err);
+        }
+
+        console.log(result);
+    });
+}
 
 exports.getAllPosts = (req, res, next) => {
 
@@ -34,9 +47,9 @@ exports.getAllPosts = (req, res, next) => {
 
 exports.getOnePost = (req, res, next) => {
 
-    const id = req.params.idmessages
+    const id = req.params.idpost
 
-    db.query("SELECT * FROM posts WHERE idmessages = ?", id,
+    db.query("SELECT * FROM posts WHERE idpost = ?", id,
     (err, result) => {
         if(err){
             console.log(err);

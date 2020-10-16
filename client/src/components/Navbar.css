@@ -3,6 +3,7 @@
     justify-content: space-between;
     background-color: black;
     color: white;
+    height: 50px;
 }
 
 .navbar-container {
@@ -13,6 +14,7 @@
 
 .nav-menu {
     display: flex;
+    align-items: center;
     text-decoration: none;
 }
 
@@ -41,31 +43,43 @@
 }
 
 .nav-signup {
-    padding: 6px 12px;
-    border-radius: 5px;
-    background-color: turquoise;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .nav-signup:hover {
-    opacity: 0.9;
-    transition: all 0.2s ease-out;
+    background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.8s ease-out;
 }
 
 .nav-login {
     padding: 5px 12px;
-    border: 1px solid  turquoise;
+    border: 1px solid   rgb(39, 176, 255);
     border-radius: 5px;
     text-decoration: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold; 
 }
 
 .nav-login:hover {
-    opacity: 0.9;
-    transition: all 0.2s ease-out;
+    background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.8s ease-out;
 }

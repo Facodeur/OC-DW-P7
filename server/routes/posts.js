@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 
 const postsCtrl = require('../controllers/posts');
 
-router.post('/posts', postsCtrl.createPosts);
-router.get('/getposts', postsCtrl.getAllPosts);
-router.get('/getpost/:idmessages', postsCtrl.getOnePost);
+router.post('/posts',auth, postsCtrl.createPosts);
+router.post('/like/:idpost',auth, postsCtrl.likes);
+
+router.get('/getposts',auth, postsCtrl.getAllPosts);
+router.get('/getpost/:idpost',auth, postsCtrl.getOnePost);
 
 
 // const sauceCtrl = require('../controllers/sauce');
