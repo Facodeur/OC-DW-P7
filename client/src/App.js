@@ -1,32 +1,28 @@
-import React from 'react';
-import './App.css';
-import Form from './components/Form';
-import FormLogin from './components/FormLogin'
-import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import CreatePost from './pages/CreatePost';
-import Home from './pages/Home';
-import Post from './pages/Post';
-import Axios from 'axios';
-
+import React from "react";
+import "./App.css";
+import Form from "./components/Form";
+import FormLogin from "./components/FormLogin";
+import Header from "./components/Navbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Post from "./pages/Post";
+import UserProfil from './components/UserProfil';
 
 function App() {
-
-  Axios.defaults.headers.common['Authorization'] = localStorage.getItem('login');
   return (
     <>
-      <Router>
-        <Navbar />
-        
-        <Switch>
-          <Route exact path='/home' render={() => <Home />}/>
-          <Route exact path='/create-post' render={() => <CreatePost />}/>
-          <Route exact path='/post/:postId' render={() => <Post />} />
-          <Route exact path='/login' render={() => <FormLogin />} />
-          <Route exact path='/signup' render={() => <Form />} />
-        </Switch>
-      </Router> 
-      
+          
+          <Router>
+            <Header />
+              
+            <Switch>
+              <Route exact path="/home" render={() =><Home />} />
+              <Route exact path="/post/:postId" render={() => <Post />} />
+              <Route exact path="/connexion" render={() => <FormLogin />} />
+              <Route exact path="/inscription" render={() => <Form />} />
+              <Route exact path="/profil" render={() =><UserProfil />} />
+            </Switch>
+          </Router>   
     </>
   );
 }

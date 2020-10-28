@@ -11,6 +11,10 @@ router.get('/getposts',auth, postsCtrl.getAllPosts);
 router.get('/getpost/:idpost',auth, postsCtrl.getOnePost);
 
 
+// router.delete('/post/:id', auth, postCtrl.deletePost);
+// router.delete('/comment/:id', auth, commentCtrl.deleteComment);
+
+
 // const sauceCtrl = require('../controllers/sauce');
 // const auth = require('../middleware/auth');
 // const multer = require('../middleware/multer-config');
@@ -20,6 +24,5 @@ router.get('/getpost/:idpost',auth, postsCtrl.getOnePost);
 // router.post('/:id/like', auth, sauceCtrl.likeSauce);
 // router.get('/:id', auth, sauceCtrl.getOneSauce);
 // router.put('/:id', auth, multer, sauceCtrl.modifySauce);
-// router.delete('/:id', auth, sauceCtrl.deleteSauce);
 
 module.exports = router;

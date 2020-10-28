@@ -11,4 +11,4 @@ const FormSuccess = () => {
     )
 }
 
-export default FormSuccess
+export default FormSuccess;

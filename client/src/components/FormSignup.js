@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Link } from "react-router-dom";
 import Axios from 'axios';
 import useForm from './useForm';
 import validate from './validateInfo';
 import './Form.css';
 
 const FormSignup = ({ submitForm }) => {
-
-    const { handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
 
     const register = () => {
         Axios.post("http://localhost:3010/api/user/signup", {
@@ -15,13 +14,16 @@ const FormSignup = ({ submitForm }) => {
         password: values.password
         }).then((response) => {
         console.log(response)
-        });
+        }).catch(error => console.log(error))
     };
 
+    const { handleChange, values, handleSubmit, errors } = useForm(submitForm, validate, register);
+    
+    
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Get started</h1>
+                <h2>M'inscrire</h2>
                 <div className="form-inputs">
                     <label htmlFor="username" className="form-label">
                         Username
@@ -82,13 +84,13 @@ const FormSignup = ({ submitForm }) => {
                         />
                         {errors.password2 && <p>{errors.password2}</p>}
                 </div>
-                <button className="form-input-btn" type="submit" onClick={register}>Sign up</button>
+                <button className="form-input-btn" type="submit" onClick={register}>Go !</button>
                 <span className="form-input-login">
-                    Already have an account? Login <a href="#">here</a>
+                    Already have an account? Login <Link to="/connexion">here</Link>
                 </span>
             </form>
         </div>
     )
 }
 
-export default FormSignup
+export default FormSignup;

@@ -39,16 +39,12 @@ exports.login = (req, res, next) => {
       if(dbResult.length > 0) {
         bcrypt.compare(password, dbResult[0].password, (error, response) => {
           if(response) {
-            console.log(dbResult)
-            res.status(200).json({
-                            userId: dbResult[0].id,
-                            userName: dbResult[0].username, 
-                            token: jwt.sign(
-                                { userId: dbResult[0].id },
-                                'RANDOM_TOKEN_SECRET',
-                                { expiresIn: '24h' }
-                            )
-                          });
+            console.log("login", dbResult)
+            const id = dbResult[0].id;
+            const username = dbResult[0].username;
+            const token = jwt.sign({id}, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' })
+
+            res.status(200).json({ auth: true, token: token, username: username });
           } else {
             res.status(401).json({ message: "Wrong email/password combination"})
           }

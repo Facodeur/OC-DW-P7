@@ -9,10 +9,14 @@ export default function Post() {
 
     const [post, setPost] = useState({});
 
+    Axios.interceptors.request.use(function (config) {
+        const token = localStorage.getItem('user');
+         config.headers.Authorization = token;
+         return config; });
+
     useEffect(() => {
         Axios.get(`http://localhost:3010/api/post/getpost/${postId}`).then((data) => {
             setPost({ 
-                title: data.data[0].title,
                 postText: data.data[0].text,
                 imgUrl: data.data[0].imageUrl
             })
@@ -20,12 +24,20 @@ export default function Post() {
         })
     }, []);
 
+    // const likePost = (id) => {
+    //     Axios.post(`http://localhost:3010/api/post/like/${id}`)
+    //       .then((response) => {
+    //         response.json();
+    //       })
+    //       .then((data) => {
+    //         console.log("ma data", data);
+    //       });
+    //   };
+
     
     return (
         <div className="singlePost">
            <div className="Post single" >
-                <h1>{post.title}</h1>
-                
                 <p>{post.postText}</p>
                 <p>{post.imgUrl}</p>
                 

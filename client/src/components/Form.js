@@ -15,7 +15,6 @@ const Form = () => {
     return (
         <>
         <div className="form-container">
-            <span className="close-btn">x</span>
             <div className="form-content-left">
                 <img src="images/icon2.svg" alt="spaceship" className="form-img" />
             </div>

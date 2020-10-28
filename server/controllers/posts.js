@@ -4,14 +4,13 @@ const fs = require('fs');
 
 exports.createPosts = (req, res, next) => {
     
-    const title = req.body.title;
+
     const text = req.body.text;
     const imgageUrl = req.body.imgageUrl;
 
-    console.log("titre",title + " texte",text)
 
-    db.query("INSERT INTO posts (title, text, imageUrl, date_posted) VALUES (?, ?, ?, NOW())",
-    [title, text, imgageUrl], (err, result) => {
+    db.query("INSERT INTO posts (text, imageUrl, date_posted) VALUES ( ?, ?, NOW())",
+    [text, imgageUrl], (err, result) => {
         if(err){
             console.log(err);
         }
@@ -35,7 +34,7 @@ exports.likes = (req, res, next) => {
 
 exports.getAllPosts = (req, res, next) => {
 
-    db.query("SELECT * FROM posts", 
+    db.query("SELECT * FROM posts",
     (err, result) => {
         if(err){
             console.log(err);

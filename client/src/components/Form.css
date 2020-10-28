@@ -6,7 +6,7 @@
   border-radius: 10px;
   height: 600px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 
 .close-btn {
@@ -78,6 +78,10 @@
   text-align: start;
   width: 80%;
   margin-bottom: 1rem;
+  color: #fff;
+}
+
+.form h2 {
   color: #fff;
 }
 
