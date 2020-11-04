@@ -6,7 +6,7 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 
 
 
-const PostList = () => {
+const PostList = (props) => {
     let history = useHistory();
     
     
@@ -26,6 +26,7 @@ const PostList = () => {
             
 
             {postList.map((val, key) => {
+              console.log("val",val)
               return (
                   <Container key={key}>
                     <Card 
@@ -45,9 +46,9 @@ const PostList = () => {
                         </Card.Text>
                       </Card.Body>
                       <Card.Footer className="text-muted">
-                          0 <AiFillLike className="mr-2"/>
+                          {val.likes} <AiFillLike className="mr-2"/>
                           
-                          0 <AiFillDislike/>
+                         {val.dislikes} <AiFillDislike/>
                       </Card.Footer>
                     </Card>
                   </Container>
@@ -60,20 +61,3 @@ const PostList = () => {
 }
 
 export default PostList
-
-
-
-                    // <button
-                    //   className="btn"
-                    //   onClick={() => {
-                    //     likePost(val.idpost);
-                    //   }}
-                    // >
-                    //   Like
-                    // </button>
-                    // <div>
-                    //   <h4>{val.likes}</h4>
-                    //   <h4>UserName</h4>
-
-
-

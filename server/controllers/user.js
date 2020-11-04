@@ -53,4 +53,18 @@ exports.login = (req, res, next) => {
         res.status(404).json({ message: "User not exist !"})
       }
     })
-}
+};
+
+exports.getOneUser = (req, res, next) => {
+
+  const id = req.params.id
+
+  db.query("SELECT * FROM users WHERE id = ?", id,
+  (err, result) => {
+      if(err){
+          console.log(err);
+      }
+
+      res.send(result);
+  });
+};

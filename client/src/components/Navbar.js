@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
 import { Button, Nav, Navbar } from "react-bootstrap";
 import { BsPeopleCircle as IconProfil } from "react-icons/bs";
+import imgLogo from '../images/icon-left-white.svg'
 
 function Header() {
   const getUser = localStorage.getItem("user");
@@ -22,14 +22,17 @@ function Header() {
   return (
     <>
       <Navbar expand="md" bg="dark" variant="dark">
-        <Navbar.Brand href="/home">
-          <img
-            alt=""
-            src="images/icon-left-white.svg"
-            height="30"
-            className="d-inline-block align-top"
-          />{" "}
-        </Navbar.Brand>
+        <Link to="/home">
+          <Navbar.Brand>
+            <img
+              alt="logo"
+              src={imgLogo}
+              height="30"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+        </Link>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-end"
@@ -42,7 +45,12 @@ function Header() {
               </Link>
 
               <Link to="/home">
-                <Button onClick={logout} className="m-1" variant="danger" size="sm">
+                <Button
+                  onClick={logout}
+                  className="m-1"
+                  variant="danger"
+                  size="sm"
+                >
                   Se déconnecter
                 </Button>
               </Link>

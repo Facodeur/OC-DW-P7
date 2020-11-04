@@ -1,5 +1,7 @@
 import React from "react";
 import { Jumbotron, Image, Container } from "react-bootstrap";
+import welcomeImage from '../images/feedback.jpg'
+
 const Welcome = () => {
   return (
     <>
@@ -8,7 +10,7 @@ const Welcome = () => {
         <p>Venez participer aux échanges entre collègues</p>
       </Jumbotron>
       <Container>
-        <Image src="images/feedback.jpg" fluid />
+        <Image src={welcomeImage} fluid />
       </Container>
     </>
   );
